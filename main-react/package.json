@@ -54,15 +54,17 @@
     "@umijs/route-utils": "^1.0.33",
     "antd": "^4.15.0",
     "classnames": "^2.2.6",
+    "good-storage": "^1.1.1",
     "lodash": "^4.17.11",
-    "moment": "^2.25.3",
     "omit.js": "^2.0.2",
     "react": "^16.14.0",
     "react-dev-inspector": "^1.1.1",
     "react-dom": "^17.0.0",
     "react-helmet-async": "^1.0.4",
+    "react-keep-alive": "^2.5.2",
     "umi": "^3.4.1",
-    "umi-request": "^1.0.8"
+    "umi-request": "^1.0.8",
+    "qiankun-common": "git+https://github.com/czero1995/qiankun-common.git"
   },
   "devDependencies": {
     "@ant-design/pro-cli": "^1.0.28",

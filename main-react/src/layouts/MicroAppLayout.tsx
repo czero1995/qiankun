@@ -6,8 +6,8 @@ import { MicroAppWithMemoHistory } from 'umi';
 import allRoutes from '../../config/routes';
 
 function MicroAppLayout(props) {
+  
     const targetMicro = transRoutes(allRoutes[0].routes, props.location.pathname)
-    console.log('targetMicro: ', targetMicro);
   return  <Provider>
   <KeepAlive name={props.location.pathname}>
     {

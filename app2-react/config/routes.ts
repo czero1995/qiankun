@@ -7,7 +7,7 @@
         name:'一级页面(页面4)',
         path: '/childTwoPageFour',
         icon: 'smile',
-        component: './One',
+        component: './Four',
       }, 
       {
         name: '多级菜单',
@@ -16,12 +16,12 @@
           {
             name: '页面5',
             path: '/childTwoMenu/pageFive',
-            component: './Two',
+            component: './Five',
           },
           {
             name: '页面6',
             path: '/childTwoMenu/pageSix',
-            component: './Three',
+            component: './Six',
           },
         ]
       },

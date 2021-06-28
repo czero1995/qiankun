@@ -20,7 +20,7 @@
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
     "precommit": "lint-staged",
     "prettier": "prettier -c --write \"src/**/*\"",
-    "start": "cross-env UMI_ENV=dev umi dev --port=5002",
+    "start": "cross-env UMI_ENV=dev umi dev --port 5001",
     "start:dev": "cross-env REACT_APP_ENV=dev MOCK=none UMI_ENV=dev umi dev",
     "start:no-mock": "cross-env MOCK=none UMI_ENV=dev umi dev",
     "start:no-ui": "cross-env UMI_UI=none UMI_ENV=dev umi dev",
@@ -35,9 +35,15 @@
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
     "**/*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": ["prettier --write"]
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
+    ]
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 10"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
   "dependencies": {
     "@ant-design/icons": "^4.0.0",
     "@ant-design/pro-descriptions": "^1.2.0",
@@ -45,6 +51,7 @@
     "@ant-design/pro-layout": "^6.9.0",
     "@ant-design/pro-table": "^2.17.0",
     "@umijs/route-utils": "^1.0.33",
+    "@umijs/plugin-qiankun": "^2.25.1",
     "antd": "^4.15.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.11",
@@ -55,7 +62,8 @@
     "react-dom": "^17.0.0",
     "react-helmet-async": "^1.0.4",
     "umi": "^3.4.1",
-    "umi-request": "^1.0.8"
+    "umi-request": "^1.0.8",
+    "qiankun-common": "git+https://github.com/czero1995/qiankun-common.git"
   },
   "devDependencies": {
     "@ant-design/pro-cli": "^1.0.28",
@@ -90,7 +98,9 @@
     "stylelint": "^13.0.0",
     "typescript": "^4.0.3"
   },
-  "engines": { "node": ">=10.0.0" },
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "checkFiles": [
     "src/**/*.js*",
     "src/**/*.ts*",

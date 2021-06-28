@@ -1,21 +1,16 @@
 import TableComponet from '@/pages/TableList';
-import { qiankunJump } from '@/utils';
-import { Button, Form, Input, Tabs } from 'antd';
+import { Form, Input, Tabs } from 'antd';
 import React from 'react';
 import { Route } from 'umi';
 const { TabPane } = Tabs;
 const One = () => {
-    const jumoPageTwo = () => {
-        qiankunJump('/childTwoMenu/pageFive')
-    }
     return <div>
-        <h1>子应用2  第四页</h1>
-        <Button type="primary" onClick={jumoPageTwo}>跳转到pageFive</Button>
+        <h1>子应用(app2)页面五</h1>
         <Form>
-            <Form.Item name="1234" label="第一个"> 
+            <Form.Item name="1234" label="app2"> 
                 <Input/>
             </Form.Item>
-            <Form.Item name="ava" label="第二个"> 
+            <Form.Item name="ava" label="app22"> 
                 <Input/>
             </Form.Item>
         </Form>

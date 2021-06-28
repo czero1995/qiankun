@@ -1,23 +1,20 @@
 import TableComponet from '@/pages/TableList';
-import { qiankunJump } from '@/utils';
 import { Button, Form, Input, Tabs } from 'antd';
-import { util } from 'core-util';
-import React from 'react';
+import { commonUtil } from 'qiankun-common';
 import { Route } from 'umi';
 const { TabPane } = Tabs;
 const One = () => {
     const jumoPageTwo = () => {
-        qiankunJump('/childOneMenu/pageTwo')
+        commonUtil.qiankunJump('/childOneMenu/pageTwo')
     }
-    util.printConsole();
     return <div>
-        <h1>子应用1 页面 页面1</h1>
-        <Button type="primary" onClick={jumoPageTwo}>跳转到pageTwo</Button>
+        <h1>子应用(app1)页面1</h1>
+        <Button type="primary" onClick={jumoPageTwo}>跳转到页面二</Button>
         <Form>
-            <Form.Item name="1234" label="第一个"> 
+            <Form.Item name="1234" label="app1第一个"> 
                 <Input/>
             </Form.Item>
-            <Form.Item name="ava" label="第二个"> 
+            <Form.Item name="ava" label="app1第二个"> 
                 <Input/>
             </Form.Item>
         </Form>
@@ -25,10 +22,10 @@ const One = () => {
         <Tabs defaultActiveKey="1" onChange={() => {}}>
     <TabPane tab="Tab 1" key="1">
     <Form>
-            <Form.Item name="1234" label="第一个"> 
+            <Form.Item name="1234" label="app1第三个"> 
                 <Input/>
             </Form.Item>
-            <Form.Item name="ava" label="第一个"> 
+            <Form.Item name="ava" label="app1第四个"> 
                 <Input/>
             </Form.Item>
         </Form>
@@ -38,10 +35,10 @@ const One = () => {
     </TabPane>
     <TabPane tab="Tab 3" key="3">
     <Form>
-            <Form.Item name="1234" label="第三个"> 
+            <Form.Item name="1234" label="Tab 3"> 
                 <Input/>
             </Form.Item>
-            <Form.Item name="ava" label="第三个"> 
+            <Form.Item name="ava" label="Tab 33"> 
                 <Input/>
             </Form.Item>
         </Form>

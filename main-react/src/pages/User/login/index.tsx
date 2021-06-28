@@ -1,3 +1,7 @@
+import type { ConnectState } from '@/models/connect';
+import type { StateType } from '@/models/login';
+import type { LoginParamsType } from '@/services/login';
+import { getFakeCaptcha } from '@/services/login';
 import {
   AlipayCircleOutlined,
   LockOutlined,
@@ -5,19 +9,15 @@ import {
   MobileOutlined,
   TaobaoCircleOutlined,
   UserOutlined,
-  WeiboCircleOutlined,
+  WeiboCircleOutlined
 } from '@ant-design/icons';
-import { Alert, Space, message, Tabs } from 'antd';
-import React, { useState } from 'react';
 import ProForm, { ProFormCaptcha, ProFormCheckbox, ProFormText } from '@ant-design/pro-form';
-import { useIntl, connect, FormattedMessage } from 'umi';
-import { getFakeCaptcha } from '@/services/login';
+import { Alert, message, Space, Tabs } from 'antd';
+import React, { useState } from 'react';
 import type { Dispatch } from 'umi';
-import type { StateType } from '@/models/login';
-import type { LoginParamsType } from '@/services/login';
-import type { ConnectState } from '@/models/connect';
-
+import { connect, FormattedMessage } from 'umi';
 import styles from './index.less';
+
 
 export type LoginProps = {
   dispatch: Dispatch;
@@ -42,7 +42,6 @@ const Login: React.FC<LoginProps> = (props) => {
   const { userLogin = {}, submitting } = props;
   const { status, type: loginType } = userLogin;
   const [type, setType] = useState<string>('account');
-  const intl = useIntl();
 
   const handleSubmit = (values: LoginParamsType) => {
     const { dispatch } = props;
@@ -75,26 +74,17 @@ const Login: React.FC<LoginProps> = (props) => {
         <Tabs activeKey={type} onChange={setType}>
           <Tabs.TabPane
             key="account"
-            tab={intl.formatMessage({
-              id: 'pages.login.accountLogin.tab',
-              defaultMessage: 'Account password login',
-            })}
+            tab="Account password login"
           />
           <Tabs.TabPane
             key="mobile"
-            tab={intl.formatMessage({
-              id: 'pages.login.phoneLogin.tab',
-              defaultMessage: 'Mobile phone number login',
-            })}
+            tab="Mobile phone number login"
           />
         </Tabs>
 
         {status === 'error' && loginType === 'account' && !submitting && (
           <LoginMessage
-            content={intl.formatMessage({
-              id: 'pages.login.accountLogin.errorMessage',
-              defaultMessage: 'Incorrect account or password（admin/ant.design)',
-            })}
+            content="Incorrect account or password（admin/ant.design)"
           />
         )}
         {type === 'account' && (
@@ -105,19 +95,11 @@ const Login: React.FC<LoginProps> = (props) => {
                 size: 'large',
                 prefix: <UserOutlined className={styles.prefixIcon} />,
               }}
-              placeholder={intl.formatMessage({
-                id: 'pages.login.username.placeholder',
-                defaultMessage: 'Username: admin or user',
-              })}
+              placeholder="Username: admin or user"
               rules={[
                 {
                   required: true,
-                  message: (
-                    <FormattedMessage
-                      id="pages.login.username.required"
-                      defaultMessage="Please enter user name!"
-                    />
-                  ),
+                  message:"Please enter user name!"
                 },
               ]}
             />
@@ -127,19 +109,11 @@ const Login: React.FC<LoginProps> = (props) => {
                 size: 'large',
                 prefix: <LockOutlined className={styles.prefixIcon} />,
               }}
-              placeholder={intl.formatMessage({
-                id: 'pages.login.password.placeholder',
-                defaultMessage: 'Password: ant.design',
-              })}
+              placeholder="Password: ant.design"
               rules={[
                 {
                   required: true,
-                  message: (
-                    <FormattedMessage
-                      id="pages.login.password.required"
-                      defaultMessage="Please enter password！"
-                    />
-                  ),
+                  message: "Please enter password！"
                 },
               ]}
             />
@@ -157,10 +131,7 @@ const Login: React.FC<LoginProps> = (props) => {
                 prefix: <MobileOutlined className={styles.prefixIcon} />,
               }}
               name="mobile"
-              placeholder={intl.formatMessage({
-                id: 'pages.login.phoneNumber.placeholder',
-                defaultMessage: 'Phone number',
-              })}
+              placeholder="Phone number"
               rules={[
                 {
                   required: true,
@@ -190,21 +161,12 @@ const Login: React.FC<LoginProps> = (props) => {
               captchaProps={{
                 size: 'large',
               }}
-              placeholder={intl.formatMessage({
-                id: 'pages.login.captcha.placeholder',
-                defaultMessage: 'Please enter verification code',
-              })}
+              placeholder="Please enter verification code"
               captchaTextRender={(timing, count) => {
                 if (timing) {
-                  return `${count} ${intl.formatMessage({
-                    id: 'pages.getCaptchaSecondText',
-                    defaultMessage: 'Get verification code',
-                  })}`;
+                  return `${count}Get verification code`;
                 }
-                return intl.formatMessage({
-                  id: 'pages.login.phoneLogin.getVerificationCode',
-                  defaultMessage: 'Get verification code',
-                });
+                return "Get verification code"
               }}
               name="captcha"
               rules={[
